@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="missiongraudedtextModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="site_1">
+    <Key>
+      <PropertyRef Name="site_url" />
+      <PropertyRef Name="hashcontent" />
+    </Key>
+    <Property Name="site_url" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cipher" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="hashcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_on" Type="DateTime" Precision="3" />
+    <Property Name="last_updated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="missiongraudedtextEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="site_1" EntityType="Self.site_1" />
+  </EntityContainer>
+</Schema>

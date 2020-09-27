@@ -1,0 +1,31 @@
+.maindiv {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #3dccc7, #021e29);
+}
+
+#createsitediv3 {
+    padding-top: 100px;
+    margin-top: 60px;
+}
+
+h5 {
+    padding-bottom: 10px;
+}
+
+.password-field {
+    margin: 20px 0px 0px;
+    padding: 1px 2px;
+    height: 38px;
+    width: 280px;
+    z-index: 5000;
+}
+
+p {
+    padding-top: 10px;
+}
+
+#create-btn {
+    background-color: #35817f;
+    border: none;
+}

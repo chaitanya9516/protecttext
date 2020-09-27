@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Content/myassests/decorating.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/Scripts/myassests/createtabs.js" defer></script>
+    <script src="~/Scripts/myassests/onblu.js" defer></script>
+    @*<script src="~/Scripts/myassests/aes.js" defer></script>*@
+    <script src="~/Scripts/myassests/sha512.js" defer></script>
+    <script src="~/Scripts/myassests/controls.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">GuardedText</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="content"></div>
+    <div class="container my-5">
+        @*@Html.Raw(TempData["insert message"])*@
+
+        <div>
+            <button type="button" id="savebtn" class="btn btn-success" onclick="savebtn()">Save</button>
+            <button type="button" class="btn btn-danger">Danger</button>
+            <button type="button" class="btn btn-warning">Warning</button>
+        </div>
+        <br>
+        <div>
+            <button type="button" class="btn btn-primary" onclick="creatingTabs()">+ Create Tab</button>
+            <!-- <button type="button " class="my-5" >Click Me!</button> -->
+        </div>
+        <br>
+        <div class="row text-area">
+            <div class="col-4 tabs-col">
+                <div class="tab" id=tabdiv>
+
+                </div>
+            </div>
+
+            <div class="col-8 tab-content " id="txtareadiv">
+
+            </div>
+        </div>
+
+    </div>
+   <script>
+       $('document').ready(function ()
+       {
+           let fetchtext = sessionStorage.getItem("sitedata"); 
+           var res = fetchtext.slice(128, -1);
+           var a = document.getElementsByClassName("actual-textarea")[0].innerHTML = res;         
+           //console.log(a);
+
+       });
+   </script>
+                   
+</body>
+
+</html >

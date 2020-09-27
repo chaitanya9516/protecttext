@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="missiongraudedtextModelStoreContainer" CdmEntityContainer="missiongraudedtextEntities">
+    <EntitySetMapping Name="site_1">
+      <EntityTypeMapping TypeName="missiongraudedtextModel.site_1">
+        <MappingFragment StoreEntitySet="site_1">
+          <ScalarProperty Name="site_url" ColumnName="site_url" />
+          <ScalarProperty Name="cipher" ColumnName="cipher" />
+          <ScalarProperty Name="hashcontent" ColumnName="hashcontent" />
+          <ScalarProperty Name="created_on" ColumnName="created_on" />
+          <ScalarProperty Name="last_updated" ColumnName="last_updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
