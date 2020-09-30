@@ -3,35 +3,45 @@ var salt = "acbedgf123321";
 var inithash = "";
 var siteurl = "";
 
+function loadlayout() {
+    let charlength = localStorage.getItem("charcount");
+    let tablength = localStorage.getItem("tabnumber");
+    // let tablen = Number(tablength) - 1;
+    console.log(tablength);
+    console.log(charlength);
+    var i;
+    for (i = 0; i <= tablength; i++) {
+        let generatetabs = creatingTabs();
+        //let makeactive = active2();
 
- //function loadlayout()
- //{
- //   let site2 = sessionStorage.getItem("sitename");
- //    console.log(site2);
-   
- //    $.ajax({
- //        url: "/Home/getusertext?sitename=" + site2,
- //        type: "POST",
- //        data: {
-             
-             
- //        },
- //        dataType: "json",
- //        success: function (data) {
+        if (i == 0) {
+            let fetchtext = sessionStorage.getItem("sitedata");
+            //let generatetabs = creatingTabs();
+            //let makeactive = active2();
+            let val1 = charlength.split(',')[i];
+            let value1 = Number(val1);
 
- //            var dec = CryptoJS.AES.decrypt(data, password).toString();
- //            document.getElementsByTagName("html")[0].innerHTML = dec;
- //        },
- //        error: function (err) {
+            let res = fetchtext.substring(128, value1);
+            var a = document.getElementsByClassName("actual-textarea")[i].innerHTML = res;
+            console.log(a);
+        }
+        else {
+            let fetchtext = sessionStorage.getItem("sitedata");
+            //let generatetabs = creatingTabs();
+            //let makeactive = active2();
+            let val2 = charlength.split(',')[i];
+            let value2 = Number(val2);
 
- //            alert("unable to load please try again");
- //            console.log(err);
- //        }
+            let countingchar = value2 + 128;
+            let b1 = countingchar.value;
+            console.log(b1);
+            let res = fetchtext.substring(countingchar, value2);
+            var b = document.getElementsByClassName("actual-textarea")[i].innerHTML = res;
+            console.log(b);
+        }
+    }
 
- //    });
-   
-
- //}
+}
 
 function enterpassword() {
 
@@ -152,6 +162,42 @@ function savebtn() {
     let site = sessionStorage.getItem("sitename");
     let hash = sessionStorage.getItem("hash");
     var cipher = CryptoJS.AES.encrypt(allText, password).toString();
+ //////////////////////////////////////////////////////////////////////////////////////////////
+    //let tabcount = document.getElementById("tabdiv").children.length;
+    var txtareaelements = document.querySelectorAll("textarea");
+    console.log(txtareaelements);
+    let sub = txtareaelements.length - 1;
+    console.log(sub);
+    var array = [];
+    //var array2 = [];
+        
+    var i;
+    for (i = 0; i <= sub; i++) {
+      
+        let a = txtareaelements[i].value.length;
+        //let tabcount = document.querySelector("textarea");
+        //tabcount.value.length;
+        if (i == 0)
+        {
+            array[array.length] = a;
+            console.log(array);
+        }
+        else
+        {
+            array.push(a);
+            console.log(a);
+
+        }
+       
+        
+            //array[array.length] = a;
+            //var tabcount = array.push(array2);
+            //console.log(tabcount);
+ 
+    }
+    localStorage.setItem("charcount", array);
+    localStorage.setItem("tabnumber", sub);
+
     //return (cipher);
     var dataObj = {  
         site_url: site,
@@ -173,7 +219,7 @@ function savebtn() {
         },
         error: function (err) {
 
-             $("#content").html("<div class='failed'> please try again,try to enter only 100000 charecters..! </div>");
+          $("#content").html("<div class='failed'> please try again,try to enter only 100000 charecters..! </div>");
         }
 
     });

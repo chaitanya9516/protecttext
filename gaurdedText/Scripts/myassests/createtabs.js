@@ -2,10 +2,13 @@
     creatingTabs()
 })()
 
+var count = "";
+var tabcount = "";
+
 function creatingTabs() {
-    var count = document.getElementById("tabdiv").children.length;
-    var add = count + 1;
-    var tabcount = add;
+    count = document.getElementById("tabdiv").children.length;
+    let add = count + 1;
+    tabcount = add;
     // alert(tabcount);
 
     //creating tablinks
@@ -28,6 +31,10 @@ function creatingTabs() {
     createtextarea.setAttribute("maxlength", "100000");
     createtextarea.setAttribute("onchange", "gatheringtxt()");
     document.getElementsByClassName("tab-content")[0].appendChild(createtextarea);
+
+    active2();
+}
+function active2() {
 
     //adding & removing active to class when u create a new tab-btn and txtarea
     let bringdiv = document.getElementById("tabdiv").children;
@@ -92,16 +99,3 @@ function gatheringtxt() {
     // localStorage.setItem("alltext", allText);
 }
 
-// function updateText() {
-//   if (allText != allText2){
-//   var check = document.querySelectorAll("textarea");
-//   for (var i = 1; i <= check.length; i++) {
-//     if (check[i - 1].value != "")
-//       allText2 = allText2 + seperator + textareas[i - 1].value;
-//   }
-//   return allText2
-//   // console.log(allText2);
-// }
-// else{
-// return 
-// }
