@@ -4,9 +4,41 @@
     box-sizing: border-box;
 }
 
+#loading {
+    width: 100%;
+    height: 140vh;
+    background-color: #ffff;
+    opacity: 0.2;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+
+#rot {
+    margin-left: 320px;
+    width: 155px;
+    height: 155px;
+    background: #000; /*3dccc7;*/ 
+    border-radius: 50%;
+    border-right: 3px solid #ffffff;
+    animation: rot 2s linear infinite;
+}
+
+@keyframes rot {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .maindiv {
     width: 100%;
-    height: 129vh;
+    height: 140vh;
     background: linear-gradient(180deg, #3dccc7, #021e29);
 
 }
@@ -44,8 +76,8 @@ h3 {
 }
 
  #create_site_txtbox:focus {
-        width: 180px;
-        transition: 0.5s;
+     width: 180px;
+     transition: 0.5s;
  }
 
 .col {
@@ -68,3 +100,9 @@ p {
     font-style: normal;
     text-shadow: 8px 8px 8px #0a0a0a;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+

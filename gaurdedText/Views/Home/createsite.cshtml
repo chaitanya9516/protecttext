@@ -35,13 +35,19 @@
                     <button id="create-btn" class="btn btn-primary btn-createsite" type="button" onclick="setpassword()">create site</button>
                     @*<label>Total Students:</label>  @ViewBag.urfl;*@
                 </div>
+                <input type="hidden" id="hidden_field" name="scenario_decider" value="true">
+
             </div>
         </section>
 
-
-
-
     </div>
+    <script>
+
+        let val = document.getElementById("hidden_field").value;
+        //console.log(val);
+        let scenario_ses = sessionStorage.setItem("create_site_val2", val);
+        //console.log(scenario_ses);
+    </script>
 </body>
 
 </html>

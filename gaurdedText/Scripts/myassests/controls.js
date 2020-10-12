@@ -3,6 +3,14 @@ var salt = "acbedgf123321";
 var inithash = "";
 var siteurl = "";
 
+function scenario_func() {
+
+    let val = document.getElementById("hidden_field").value;
+    //console.log(val);
+    let scenario_ses = sessionStorage.setItem("create_site_val2", val);
+    //console.log(scenario_ses);
+}
+
 function loadlayout() {
     let charlength = localStorage.getItem("charcount");
     let tablength = localStorage.getItem("tabnumber");
@@ -11,8 +19,8 @@ function loadlayout() {
     console.log(charlength);
     var i;
     for (i = 0; i <= tablength; i++) {
-        let generatetabs = creatingTabs();
-        //let makeactive = active2();
+        creatingTabs();
+        
 
         if (i == 0) {
             let fetchtext = sessionStorage.getItem("sitedata");
@@ -107,6 +115,7 @@ function setpassword()
         //var sitename = window.location.pathname.substring(1);
         //siteurl = $("#create-site-txtbox").val();
         let site = sessionStorage.getItem("sitename");
+        sessionStorage.setItem('hash', inithash);
         console.log(site);
 
         $.ajax({
@@ -202,7 +211,7 @@ function savebtn() {
     var dataObj = {  
         site_url: site,
         hashcontent: hash,
-        cipher: cipher,
+        cipher: cipher
         
     }
             

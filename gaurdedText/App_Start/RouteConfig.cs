@@ -24,6 +24,19 @@ namespace gaurdedText
    );
 
             routes.MapRoute(
+                name: "newRoute2",
+                url: "{name}",
+                defaults: new { controller = "Home", action = "createsite", name = UrlParameter.Optional }
+
+   );
+            routes.MapRoute(
+                    name: "newRoute3",
+                    url: "{name}",
+                    defaults: new { controller = "Home", action = "enterpassword", name = UrlParameter.Optional }
+
+       );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{name}",
                 defaults: new { controller = "Home", action = "Index", name = UrlParameter.Optional }

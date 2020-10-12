@@ -25,7 +25,16 @@ p {
     padding-top: 10px;
 }
 
+.loading {
+    width: 155px;
+    height: 155px;
+    background-color: #ff0000;
+    margin-left: 220px;
+}
+
 #create-btn {
     background-color: #35817f;
     border: none;
 }
+
+

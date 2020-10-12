@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="~/Content/myassests/decorating.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="~/Scripts/myassests/createtabs.js" defer></script>
+
     <script src="~/Scripts/myassests/onblu.js" defer></script>
     @*<script src="~/Scripts/myassests/aes.js" defer></script>*@
     <script src="~/Scripts/myassests/sha512.js" defer></script>
     <script src="~/Scripts/myassests/controls.js"></script>
+    <script src="~/Scripts/myassests/createtabs.js"></script>
 </head>
 
 <body>
@@ -64,55 +65,73 @@
 
     </div>
    <script>
-       $('document').ready(function ()
+
+       let scenario_select = sessionStorage.getItem("create_site_val2");
+       
+       if (scenario_select == "true")
        {
-          // let charlength = localStorage.getItem("charcount");
-          // let tablength = localStorage.getItem("tabnumber");
-          //// let tablen = Number(tablength) - 1;
-          // console.log(tablength);
-          // console.log(charlength);
-          // var i;
-          // for (i = 0; i <= tablength; i++)
-          // {
-          //     let generatetabs = creatingTabs();
-          //     //let makeactive = active2();
+          let abc = creatingTabs();
+       }
+       else
+       {
+          let abcd = loadlayout();
+       }
+       //$('document').ready(function ()
+       //{
+       //    let charlength = localStorage.getItem("charcount");
+       //    let tablength = localStorage.getItem("tabnumber");
+       //   // let tablen = Number(tablength) - 1;
+       //    console.log(tablength);
+       //    console.log(charlength);
+       //    var i;
+       //    for (i = 0; i <= tablength; i++)
+       //    {
+       //        let generatetabs = creatingTabs();
+       //        //let makeactive = active2();
               
-          //     if (i == 0)
-          //     {
-          //         let fetchtext = sessionStorage.getItem("sitedata");
-          //         //let generatetabs = creatingTabs();
-          //         //let makeactive = active2();
-          //         let val1 = charlength.split(',')[i];
-          //         let value1 = Number(val1);
+       //        if (i == 0)
+       //        {
+       //            let fetchtext = sessionStorage.getItem("sitedata");
+       //            //let generatetabs = creatingTabs();
+       //            //let makeactive = active2();
+       //            let val1 = charlength.split(',')[i];
+       //            let value1 = Number(val1);
 
-          //         let res = fetchtext.substring(128, value1);
-          //         var a = document.getElementsByClassName("actual-textarea")[i].innerHTML = res;
-          //         console.log(a);
-          //     }
-          //     else
-          //     {
-          //         let fetchtext = sessionStorage.getItem("sitedata");
-          //         //let generatetabs = creatingTabs();
-          //         //let makeactive = active2();
-          //         let val2 = charlength.split(',')[i];
-          //         let value2 = Number(val2);
+       //            let res = fetchtext.substring(128, value1);
+       //            var a = document.getElementsByClassName("actual-textarea")[i].innerHTML = res;
+       //            console.log(a);
+       //        }
+       //        else
+       //        {
+       //            let fetchtext = sessionStorage.getItem("sitedata");
+       //            //let generatetabs = creatingTabs();
+       //            //let makeactive = active2();
+       //            let val2 = charlength.split(',')[i];
+       //            let value2 = Number(val2);
                  
-          //         let countingchar = value2 + 128;
-          //         let b1 = countingchar.value;
-          //         console.log(b1);
-          //         let res = fetchtext.substring(countingchar, value2);
-          //         var b = document.getElementsByClassName("actual-textarea")[i].innerHTML = res;
-          //         console.log(b);
-          //     }
-          // }
+       //            let countingchar = value2 + 128;
+       //            let b1 = countingchar.value;
+       //            console.log(b1);
+       //            let res = fetchtext.substring(countingchar, value2);
+       //            var b = document.getElementsByClassName("actual-textarea")[i].innerHTML = res;
+       //            console.log(b);
+       //        }
+       //    }
 
 
-           //////////y.split(',').map(x=>parseInt(x))/////////previous code///////////////////
-           //let fetchtext = sessionStorage.getItem("sitedata"); 
-           //var res = fetchtext.slice(128, -1);
-           //var a = document.getElementsByClassName("actual-textarea")[0].innerHTML = res;    
-        
-       });
+       //    ////////y.split(',').map(x=>parseInt(x))/////////previous code///////////////////
+       //    let fetchtext = sessionStorage.getItem("sitedata"); 
+       //    var res = fetchtext.slice(128, -1);
+       //    var a = document.getElementsByClassName("actual-textarea")[0].innerHTML = res;    
+       //});
+           //loadlayout();
+
+       //let p = window.location.href;
+       //console.log("window.location.href" + p);
+       //let pre = p.substring(p.lastIndexOf('?') + 3, p.length);
+       //console.log(p);
+
+       
    </script>
                    
 </body>

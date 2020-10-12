@@ -1,6 +1,6 @@
-(function() {
-    creatingTabs()
-})()
+//(function() {
+//    creatingTabs()
+//})()
 
 var count = "";
 var tabcount = "";

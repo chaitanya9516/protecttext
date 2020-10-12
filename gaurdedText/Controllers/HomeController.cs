@@ -10,20 +10,20 @@ using System.Data.Entity;
 
 namespace gaurdedText.Controllers
 {
-   
+
 
     public class HomeController : Controller
     {
-        public static string name  = "";
+        public static string name = "";
         missiongraudedtextEntities db = new missiongraudedtextEntities();
-        
+
 
         [Route("~/")]
         [Route("")]
-       
+
         public ActionResult Index()
         {
-            
+
             //var uri = Request.RawUrl;
             //ViewBag.urfl = uri;
             //string uriconversion = string.Empty;  
@@ -32,7 +32,7 @@ namespace gaurdedText.Controllers
             //{
             //    uriconversion = uri.ToString();   
             //}
-           
+
             //if (uriconversion == Man)
             //{
             //    return RedirectToAction("createsite");
@@ -49,7 +49,7 @@ namespace gaurdedText.Controllers
         [HttpPost]
         public ActionResult createsite(site_1 s)
         {
-            
+
             db.site_1.Add(s);
             db.SaveChanges();
             return Json(new
@@ -73,7 +73,7 @@ namespace gaurdedText.Controllers
             bool result = !db.site_1.ToList().Exists(m => m.site_url.Equals(name, StringComparison.CurrentCultureIgnoreCase));
             if (result)
             {
-  
+
                 var msg = "Something went wrong,Please try again";
                 return Json(new
                 {
@@ -87,11 +87,25 @@ namespace gaurdedText.Controllers
             else
             {
 
-                bool result2 = !db.site_1.ToList().Exists(m => m.hashcontent.Equals(hash, StringComparison.CurrentCultureIgnoreCase));
-                
-                if (result2)
+                var result2 = db.site_1.Where(x => x.site_url == name).Select(x => x.hashcontent).ToList();
+
+                if (result2[0] == hash)
+                 
                 {
-                    
+                    var allUser = db.site_1.Where(x => x.site_url == name).Select(x => x.cipher).ToList();
+                    return Json(new
+                    {
+                        text = allUser,
+                        success = true,
+                        redirect = "/Home/createtabs",
+
+                    },
+                      JsonRequestBehavior.AllowGet
+                      );
+
+                }
+                else
+                {
                     var msg = "WRONG PASSWORD";
                     return Json(new
                     {
@@ -100,22 +114,11 @@ namespace gaurdedText.Controllers
                     },
                     JsonRequestBehavior.AllowGet
                     );
-                }
-                else
-                {
-                    var allUser = db.site_1.Where(x => x.site_url == name).Select(x => x.cipher).ToList();
-                    return Json(new
-                    {
-                        text = allUser,
-                        success = true,                    
-                        redirect = "/Home/createtabs",
 
-                    },
-                      JsonRequestBehavior.AllowGet
-                      );
+                 
                 }
             }
-           
+
         }
 
         //[HttpPost]
@@ -146,7 +149,7 @@ namespace gaurdedText.Controllers
             },
             JsonRequestBehavior.AllowGet
             );
-           
+
         }
 
         [HttpPost]
@@ -181,7 +184,7 @@ namespace gaurdedText.Controllers
 
         }
 
-      
+
 
 
 
