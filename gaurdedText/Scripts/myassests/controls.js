@@ -2,6 +2,44 @@ var password = "chaitanya";
 var salt = "acbedgf123321";
 var inithash = "";
 var siteurl = "";
+var seperator = "acdcc9e377db73f8b3ae141353015db7c8141a659c465cb3f42ed93e3727e8d5ff4743c887a6816821789df7914749a1ff722455b26057b6058011f3ba8886b5";
+
+function closeTab()
+{
+    //gettin tab button and textarea's id 
+    var getactiveelems = document.getElementsByClassName("border rounded actual-textarea tab-pane active")[0].id;
+    let getactiveelems2 = document.getElementsByClassName("tablinks active")[0].id;
+    
+    //console.log(getactiveelems);
+   //console.log(getactiveelems2);
+
+    if (getactiveelems != 1 || getactiveelems2 != 1) {
+
+        //remove tab and corresponding text area
+        document.getElementById(getactiveelems).remove();
+        document.getElementById(getactiveelems2).remove();
+
+        //activiating previous text area and tab-btn as active       
+        getactiveelems = parseInt(getactiveelems.substr(getactiveelems.lastIndexOf("-") + 1));
+        let prev_tab = getactiveelems - 1;
+        //console.log(prev_tab);
+
+        // console.log("Making tab with id "+prev_tab+" active");
+        var tab = document.getElementById("tab-btn-" + prev_tab);
+        var textarea = document.getElementById("txttab-" + prev_tab);
+        tab.className += " active"; //tab
+        textarea.className += " active"; //textarea
+        savebtn();
+
+    }
+
+    else
+    {
+        //show error cant delete tab 1
+        alert("You Can't delete tab-1")
+    }
+
+}
 
 function scenario_func() {
 
@@ -11,42 +49,21 @@ function scenario_func() {
     //console.log(scenario_ses);
 }
 
-function loadlayout() {
+function loadlayout()
+{
     let charlength = localStorage.getItem("charcount");
     let tablength = localStorage.getItem("tabnumber");
-    // let tablen = Number(tablength) - 1;
     console.log(tablength);
     console.log(charlength);
     var i;
-    for (i = 0; i <= tablength; i++) {
+    for (i = 0; i <= tablength; i++)
+    {
         creatingTabs();
-        
-
-        if (i == 0) {
-            let fetchtext = sessionStorage.getItem("sitedata");
-            //let generatetabs = creatingTabs();
-            //let makeactive = active2();
-            let val1 = charlength.split(',')[i];
-            let value1 = Number(val1);
-
-            let res = fetchtext.substring(128, value1);
-            var a = document.getElementsByClassName("actual-textarea")[i].innerHTML = res;
-            console.log(a);
-        }
-        else {
-            let fetchtext = sessionStorage.getItem("sitedata");
-            //let generatetabs = creatingTabs();
-            //let makeactive = active2();
-            let val2 = charlength.split(',')[i];
-            let value2 = Number(val2);
-
-            let countingchar = value2 + 128;
-            let b1 = countingchar.value;
-            console.log(b1);
-            let res = fetchtext.substring(countingchar, value2);
-            var b = document.getElementsByClassName("actual-textarea")[i].innerHTML = res;
-            console.log(b);
-        }
+        let fetchtext = sessionStorage.getItem("sitedata");
+        var res = fetchtext.split(seperator).slice(1, fetchtext.length);
+        //creatingTabs();
+        var a = document.getElementsByClassName("actual-textarea")[i].innerHTML = res[i];
+        console.log(a);  
     }
 
 }
@@ -174,9 +191,9 @@ function savebtn() {
  //////////////////////////////////////////////////////////////////////////////////////////////
     //let tabcount = document.getElementById("tabdiv").children.length;
     var txtareaelements = document.querySelectorAll("textarea");
-    console.log(txtareaelements);
+    //console.log(txtareaelements);
     let sub = txtareaelements.length - 1;
-    console.log(sub);
+    //console.log(sub);
     var array = [];
     //var array2 = [];
         
@@ -189,22 +206,18 @@ function savebtn() {
         if (i == 0)
         {
             array[array.length] = a;
-            console.log(array);
+            //console.log(array);
         }
         else
         {
             array.push(a);
-            console.log(a);
+           //console.log(a);
 
         }
        
-        
-            //array[array.length] = a;
-            //var tabcount = array.push(array2);
-            //console.log(tabcount);
  
     }
-    localStorage.setItem("charcount", array);
+    //localStorage.setItem("charcount", array);
     localStorage.setItem("tabnumber", sub);
 
     //return (cipher);

@@ -170,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\loading.css" />
+    <Content Include="Content\myassests\changepassmodal.css" />
     <Content Include="Content\myassests\createsite.css" />
     <Content Include="Content\myassests\enterpassword.css" />
     <Content Include="Global.asax" />
@@ -184,6 +185,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\myassests\aes.js" />
+    <Content Include="Scripts\myassests\buttons.js" />
     <Content Include="Scripts\myassests\controls.js" />
     <Content Include="Scripts\myassests\createtabs.js" />
     <Content Include="Content\myassests\decorating.css" />

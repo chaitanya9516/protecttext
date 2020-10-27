@@ -11,7 +11,6 @@ using System.Data.Entity;
 namespace gaurdedText.Controllers
 {
 
-
     public class HomeController : Controller
     {
         public static string name = "";
@@ -90,7 +89,6 @@ namespace gaurdedText.Controllers
                 var result2 = db.site_1.Where(x => x.site_url == name).Select(x => x.hashcontent).ToList();
 
                 if (result2[0] == hash)
-                 
                 {
                     var allUser = db.site_1.Where(x => x.site_url == name).Select(x => x.cipher).ToList();
                     return Json(new
@@ -101,7 +99,7 @@ namespace gaurdedText.Controllers
 
                     },
                       JsonRequestBehavior.AllowGet
-                      );
+                    );
 
                 }
                 else
@@ -112,10 +110,10 @@ namespace gaurdedText.Controllers
                         success = false,
                         msg
                     },
-                    JsonRequestBehavior.AllowGet
+                      JsonRequestBehavior.AllowGet
                     );
 
-                 
+
                 }
             }
 
@@ -185,9 +183,57 @@ namespace gaurdedText.Controllers
         }
 
 
+        [HttpPost]
+        public JsonResult change_password(site_1 changepass)
+        {
+            var site_name = changepass.site_url;
+            var password = changepass.hashcontent;
+            bool result = !db.site_1.ToList().Exists(m => m.site_url.Equals(site_name, StringComparison.CurrentCultureIgnoreCase));
+            if (result)
+            {
 
+                var msg = "Something went wrong,Please try again";
+                return Json(new
+                {
+                    success = false,
+                    msg
+                },
+                JsonRequestBehavior.AllowGet
+                );
+            }
+            else
+            {
+                var q = from a in db.site_1
+                        where a.site_url.Contains(site_name)
+                        select a;
+                var query = q.FirstOrDefault();
+                query.hashcontent = password;
+                db.SaveChanges();
+                var msg = "Saved Successfully";
+                    return Json(new
+                    {
+                        success = false,
+                        msg
+                    },
+                    JsonRequestBehavior.AllowGet
+                    );
+                
+            }
+        }
 
-
+        [HttpPost]
+        public JsonResult delete_Site(site_1 dele_Site)
+        {
+            var name = dele_Site.site_url;
+            var result4 = db.site_1.Where(x => x.site_url == name).FirstOrDefault();
+            db.site_1.Remove(result4);
+            db.SaveChanges();
+            return Json(new
+            {
+                redirect = "/Home/Index"
+            },
+                     JsonRequestBehavior.AllowGet
+                 );
+        }
     }
-
 }
